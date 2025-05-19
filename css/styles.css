@@ -26,6 +26,7 @@ header {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 16px;
+  position: relative;
 }
 
 .site-title {
@@ -169,20 +170,27 @@ main h2 {
 }
 
 @keyframes fadeIn {
-  0%   { opacity: 0; transform: translateY(10px); }
+  0% { opacity: 0; transform: translateY(10px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 /* === Responsive === */
 @media (max-width: 600px) {
   .header-inner {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .site-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .menu-toggle {
     display: block;
+    position: absolute;
+    left: 16px;
   }
 
   nav ul {
@@ -193,9 +201,7 @@ main h2 {
   }
 
   main h1 {
-    font-size: 28px;
-    margin-top: 30px;
-    letter-spacing: 1px;
+    display: none;
   }
 
   main h2 {
