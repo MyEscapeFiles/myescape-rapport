@@ -33,7 +33,7 @@ header {
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #00ffcc;
+  color: hsl(0, 0%, 0%);
   letter-spacing: 1px;
 }
 
