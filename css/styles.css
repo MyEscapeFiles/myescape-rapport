@@ -10,7 +10,7 @@ body {
 }
 
 header {
-  background: #000; /* plus foncé */
+  background: #000;
   color: #f5f5f5;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid #222;
@@ -26,17 +26,15 @@ header {
   padding: 0 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 60px;
 }
 
 .site-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #ccc; /* plus doux, moins flash */
+  color: #ccc;
   letter-spacing: 1px;
 }
 
@@ -47,6 +45,7 @@ header {
   font-size: 26px;
   cursor: pointer;
   z-index: 2;
+  display: none;
 }
 
 nav {
@@ -178,45 +177,27 @@ main h2 {
 }
 
 /* === Responsive === */
-header {
-  background: #000; /* plus foncé */
-  color: #f5f5f5;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid #222;
-  position: relative;
-  z-index: 10;
-  padding: 10px 0;
-}
+@media (max-width: 600px) {
+  .header-inner {
+    justify-content: center;
+    position: relative;
+  }
 
-.header-inner {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  height: 60px;
-}
+  .site-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #aaa;
+  }
 
-.site-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 22px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #ccc; /* plus doux, moins flash */
-  letter-spacing: 1px;
-}
-
-.menu-toggle {
-  background: none;
-  border: none;
-  color: #ccc;
-  font-size: 26px;
-  cursor: pointer;
-  z-index: 2;
-}
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
   nav ul {
     flex-direction: column;
