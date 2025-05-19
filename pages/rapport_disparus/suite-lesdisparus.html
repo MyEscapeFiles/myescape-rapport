@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Disparus de Décembre</title>
+  <link rel="stylesheet" href="/myescape-rapport/css/rapportdisparus.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/myescape-rapport/index.html">Accueil</a></li>
+        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
+        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Section indice</a></li>
+        <li><a href="https://myescape.fr/pages/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Rapport d'enquête</h1>
+
+    <form id="questionnaire">
+      <label>Qui est à l'origine de la disparition de Lucas ?</label>
+      <input type="text" name="question1" required />
+
+      <h2>Quels critères doivent remplir les enfants ?</h2>
+
+      <label>Âge</label>
+      <input type="text" name="age" required />
+
+      <fieldset>
+        <legend>Sexe</legend>
+        <label><input type="radio" name="sexe" value="homme" required /> Homme</label>
+        <label><input type="radio" name="sexe" value="femme" required /> Femme</label>
+      </fieldset>
+
+      <label>Situation familiale</label>
+      <input type="text" name="situation" required />
+
+      <fieldset>
+        <legend>Critères de sélection</legend>
+        <label><input type="checkbox" name="criteres" value="traumatise" /> Traumatisé</label>
+        <label><input type="checkbox" name="criteres" value="curieux" /> Curieux</label>
+        <label><input type="checkbox" name="criteres" value="creatif" /> Créatif</label>
+        <label><input type="checkbox" name="criteres" value="distrait" /> Distrait</label>
+        <label><input type="checkbox" name="criteres" value="logique" /> Logique</label>
+        <label><input type="checkbox" name="criteres" value="emotif" /> Émotif</label>
+        <label><input type="checkbox" name="criteres" value="isole" /> Isolé</label>
+        <label><input type="checkbox" name="criteres" value="athletique" /> Athlétique</label>
+        <label><input type="checkbox" name="criteres" value="bonne-sante" /> Bonne santé</label>
+        <label><input type="checkbox" name="criteres" value="obeissant" /> Obéissant</label>
+        <label><input type="checkbox" name="criteres" value="timide" /> Timide</label>
+        <label><input type="checkbox" name="criteres" value="intelligent" /> Intelligent</label>
+        <label><input type="checkbox" name="criteres" value="reveur" /> Rêveur</label>
+      </fieldset>
+
+      <label for="date-enlevement">À quelle date précise les enfants sont-ils enlevés ?</label>
+      <input type="text" id="date-enlevement" name="date-enlevement" required />
+
+      <h2>Où est Lucas ?</h2>
+
+      <label for="pays">Pays</label>
+      <input type="text" id="pays" name="pays" required />
+
+      <label for="ville">Ville</label>
+      <input type="text" id="ville" name="ville" required />
+
+      <label for="rue">Numéro et nom de la rue</label>
+      <input type="text" id="rue" name="rue" required />
+
+      <button type="button" id="goToNext" style="margin-top: 20px;">
+        CONTINUEZ L’ENQUÊTE
+      </button>
+      <p id="global-error" class="error-message" style="display: none; color: red; margin-top: 10px;"></p>
+    </form>
+  </main>
+
+  <script src="/myescape-rapport/js/suite-lesdisparus.js" defer></script>
+</body>
+</html>
