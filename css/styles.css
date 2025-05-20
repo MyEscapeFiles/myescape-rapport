@@ -24,19 +24,21 @@ header {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 60px;
 }
 
 .site-title {
-  font-size: 22px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #ccc;
+  color: #aaa;
   letter-spacing: 1px;
 }
+
 
 .menu-toggle {
   background: none;
