@@ -25,29 +25,30 @@ header {
   margin: 0 auto;
   padding: 0 16px;
   height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .site-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
   color: #aaa;
   letter-spacing: 1px;
+  pointer-events: none;
 }
 
-
 .menu-toggle {
+  display: none;
   background: none;
   border: none;
   color: #ccc;
   font-size: 26px;
   cursor: pointer;
   z-index: 2;
-  display: none;
+  position: absolute;
+  left: 16px;
 }
 
 nav {
@@ -55,20 +56,17 @@ nav {
 }
 
 nav ul {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
 }
 
 nav ul.active {
-  max-height: 300px;
+  display: flex;
 }
 
 nav a {
@@ -180,29 +178,8 @@ main h2 {
 
 /* === Responsive === */
 @media (max-width: 600px) {
-  .header-inner {
-    justify-content: center;
-    position: relative;
-  }
-
- .site-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
-  color: #aaa;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  pointer-events: none; /* optionnel si tu veux éviter les clics dessus */
-}
-
-
   .menu-toggle {
     display: block;
-    position: absolute;
-    left: 16px;
     top: 50%;
     transform: translateY(-50%);
   }
