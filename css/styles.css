@@ -89,13 +89,6 @@ main h1 {
   text-transform: uppercase;
 }
 
-main h2 {
-  margin-top: 10px;
-  font-size: 28px;
-  color: #e0e0e0;
-  font-weight: 500;
-}
-
 .games-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
