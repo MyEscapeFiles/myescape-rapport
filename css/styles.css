@@ -183,13 +183,19 @@ main h2 {
     position: relative;
   }
 
-  .site-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 20px;
-    color: #aaa;
-  }
+ .site-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: #aaa;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: none; /* optionnel si tu veux éviter les clics dessus */
+}
+
 
   .menu-toggle {
     display: block;
