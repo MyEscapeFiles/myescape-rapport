@@ -1,0 +1,38 @@
+name : deploy site on Github Pages 
+
+on: 
+  push:
+    branches:
+      -main 
+
+jobs:
+  deploy:
+    runs-on:
+      ubuntu-latest
+
+    steps:
+      - name: checkout source
+        uses: actions/configure-pages@v3
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+
+      - name: Vérifier HTML
+        run: npx htmlhint "**/*.html"
+
+      - name: Vérifier JS
+        run: npx eslint js/
+
+        notify-on-failure:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: failure()
+    steps:
+      - name: Échec — envoi mail
+        run: |
+          echo "Le déploiement de ton site a échoué." | mail -s "Déploiement échoué" myescape.contactpro@gmail.com
