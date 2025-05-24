@@ -1,0 +1,69 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chapitre 3 – Le Village Abandonné</title>
+  <link rel="stylesheet" href="/myescape-rapport/css/rapportvillage.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/myescape-rapport/index.html">Accueil</a></li>
+        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
+        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Indice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Chapitre 3</h1>
+
+    <div class="rapport-header">
+      <h2>Exploration des étages</h2>
+      <p class="confidentiel">Niveau de sécurité : restreint</p>
+    </div>
+
+    <form action="/myescape-rapport/pages/rapport_village/rapportvillage_4.html" method="get">
+
+      <!-- Question Lucas -->
+      <div class="question-row">
+        <label for="etage-lucas">À quel étage se trouve Lucas ?</label>
+        <input type="text" id="etage-lucas" name="etage-lucas" />
+      </div>
+
+      <!-- Étage -1 -->
+      <fieldset>
+        <legend>Étage -1</legend>
+        <label for="obscura">Quel est le nom de famille de la personne derrière Obscura Files ?</label>
+        <input type="text" id="obscura" name="obscura" />
+      </fieldset>
+
+      <!-- Étage -2 -->
+      <fieldset>
+        <legend>Étage -2</legend>
+        <label for="vauss">Comment s'appelle le projet du Dr VAUSS ?</label>
+        <input type="text" id="vauss" name="vauss" />
+      </fieldset>
+
+      <!-- Étage -3 -->
+      <fieldset>
+        <legend>Étage -3</legend>
+        <label for="cellule">Quel est le code pour accéder à la cellule ?</label><br><br>
+
+        <label><input type="radio" name="cellule" value="Tour-Pion-Fou-Cavalier-Roi-Reine" /> Tour - Pion - Fou - Cavalier - Roi - Reine</label><br>
+        <label><input type="radio" name="cellule" value="Roi-Pion-Fou-Cavalier-Reine-Tour" /> Roi - Pion - Fou - Cavalier - Reine - Tour</label><br>
+        <label><input type="radio" name="cellule" value="Roi-Fou-Reine-Pion-Tour-Cavalier" /> Roi - Fou - Reine - Pion - Tour - Cavalier</label><br>
+        <label><input type="radio" name="cellule" value="Fou-Tour-Reine-Roi-Pion-Cavalier" /> Fou - Tour - Reine - Roi - Pion - Cavalier</label><br>
+        <label><input type="radio" name="cellule" value="Fou-Reine-Tour-Cavalier-Pion-Roi" /> Fou - Reine - Tour - Cavalier - Pion - Roi</label><br>
+        <label><input type="radio" name="cellule" value="Reine-Fou-Roi-Cavalier-Pion-Tour" /> Reine - Fou - Roi - Cavalier - Pion - Tour</label>
+      </fieldset>
+
+      <button type="submit">Passer au chapitre suivant</button>
+    </form>
+  </main>
+  
+  <script src="/myescape-rapport/js/rapportvillage_3.js" defer></script>
+</body>
+</html>

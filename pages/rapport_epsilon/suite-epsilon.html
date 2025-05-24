@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astratech Solution</title>
+  <link rel="stylesheet" href="/myescape-rapport/css/rapportepsilon.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/myescape-rapport/index.html">Accueil</a></li>
+        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
+        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Indice</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Suite de l'enquête</h1>
+    <p>Veuillez compléter les étapes suivantes avant d'activer le système de lancement d'urgence.</p>
+
+    <form id="suite-epsilon-form">
+      <label for="etape1">Étape 1 :</label>
+      <input type="text" id="etape1" name="etape1" required />
+
+      <label for="etape2">Étape 2 :</label>
+      <input type="text" id="etape2" name="etape2" required />
+
+      <label for="etape3">Étape 3 :</label>
+      <input type="text" id="etape3" name="etape3" required />
+
+      <label for="etape4">Étape 4 :</label>
+      <input type="text" id="etape4" name="etape4" required />
+
+      <label for="code_lancement">CODE DE LANCEMENT :</label>
+      <input type="text" id="code_lancement" name="code_lancement" required />
+
+      <button type="button" id="goToNext" style="margin-top: 20px;">
+        PASSER À LA SUITE DU JEU
+      </button>
+
+      <p id="global-error" class="error-message" style="display:none; color:red; margin-top:10px;"></p>
+    </form>
+  </main>
+
+  <script src="/myescape-rapport/js/suite-epsilon.js" defer></script>
+</body>
+</html>
