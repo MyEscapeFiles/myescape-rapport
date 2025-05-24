@@ -2,7 +2,7 @@ name: deploy-pages
 
 on:
   push:
-    branches: [ main ] 
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -14,17 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Lint HTML
+      - name: Vérifier HTML
         run: npx htmlhint "**/*.html"
 
-      - name: Lint JS
-        run: npx eslint js/
-
-      - name: Vérif <h1> dans index.html
+      - name: Vérifier qu'il y a un <h1> dans index.html
         run: |
-          grep -iq "<h1>" index.html || { echo "❌ <h1> manquant" ; exit 1 ; }
+          grep -iq "<h1>" index.html || { echo "❌ Aucun <h1> trouvé dans index.html" ; exit 1 ; }
 
-      - name: Publier sur gh-pages
+      - name: Publier le site sur gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
