@@ -2,8 +2,7 @@ name: Deploy site on GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -15,27 +14,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      
       - name: Checkout source
         uses: actions/checkout@v3
 
+      
+      - name: Lint HTML
+        run: npx htmlhint "**/*.html"
+
+      - name: Lint JS
+        run: npx eslint js/
+
+      - name: Vérifier présence d’un <h1> dans index.html
+        run: |
+          grep -iq "<h1>" index.html || (echo "❌ Pas de <h1> trouvé !" && exit 1)
+
+     
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
 
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v2
+      
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v1 
         with:
-            path: ./
-
+          path: ./
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-
-      - name: Vérifier HTML
-        run: npx htmlhint "**/*.html"
-
-      - name: Vérifier JS
-        run: npx eslint js/
-
-      - name: Vérifier que index.html contient un <h1>
-        run: |
-          grep -i "<h1>" index.html || (echo "Erreur : aucun <h1> trouvé dans index.html" && exit 1)
