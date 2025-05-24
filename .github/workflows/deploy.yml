@@ -2,23 +2,31 @@ name: Deploy site on GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
+# Permissions requises par Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# (facultatif) éviter deux déploiements simultanés
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+##############################################################################
+# 1) JOB BUILD  : lint  + upload de l'artefact Pages
+##############################################################################
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      
-      - name: Checkout source
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      
+      # ---- tests / lint ----------------------------------------------------
       - name: Lint HTML
         run: npx htmlhint "**/*.html"
 
@@ -27,17 +35,29 @@ jobs:
 
       - name: Vérifier présence d’un <h1> dans index.html
         run: |
-          grep -iq "<h1>" index.html || (echo "❌ Pas de <h1> trouvé !" && exit 1)
+          grep -iq "<h1>" index.html \
+            || { echo "❌ <h1> manquant dans index.html" ; exit 1; }
 
-     
-      - name: Setup GitHub Pages
+      # ---- upload de tout le site -----------------------------------------
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v1      # <- action correcte
+        with:
+          path: .                                   # répertoire du site
+
+##############################################################################
+# 2) JOB DEPLOY : déploie l’artefact si BUILD ok
+##############################################################################
+  deploy:
+    needs: build                                   # ne s’exécute que si build ok
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - name: Configure Pages
         uses: actions/configure-pages@v3
 
-      
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v1 
-        with:
-          path: ./
-
-      - name: Deploy to GitHub Pages
+      - id: deploy
+        name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
