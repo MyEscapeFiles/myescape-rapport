@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "etage-lucas": "-42",
     obscura: "MORROW",
     vauss: "ASTRATECH SOLUTION",
-    cellule: "Fou-Reine-Tour-Cavalier-Pion-Roi"  // ✅ Corrigé ici
+    cellule: "Fou-Reine-Tour-Cavalier-Pion-Roi" 
   };
 
   const globalError = document.createElement("p");
