@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapport d'enquête – AFFAIRE : 00 </title>
+  <link rel="stylesheet" href="../../css/rapportfille.css" />
+  <script src="../../js/rapport-demo.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Accueil</a></li>
+        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
+        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Section indice</a></li>
+        <li><a href="https://myescape.fr/pages/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Rapport d'enquête – AFFAIRE : 00</h1>
+
+<div class="video-container">
+  <iframe 
+    class="video-embed"
+    src="https://www.youtube.com/embed/ce0JO9Woi1A"
+    title="Vidéo d'introduction à l'affaire"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+  <p class="alt-video">
+    Si la vidéo ne s’affiche pas, <a href="https://www.youtube.com/watch?v=ce0JO9Woi1A" target="_blank" rel="noopener noreferrer">cliquez ici</a>.
+  </p>
+</div>
+
+
+    <form id="questionnaire">
+      <!-- Identité de la victime -->
+        <h2>Qui est la victime ?</h2>
+      <label for="nom">Quel est le nom de famille de la victime ?</label>
+      <input type="text" id="nom" name="nom" required />
+
+      <label for="prenom">Quel est son prénom ?</label>
+      <input type="text" id="prenom" name="prenom" required />
+
+      <label for="age">Quel âge avait-elle ?</label>
+      <input type="text" id="age" name="age" required />
+
+      <label for="metier">Quel était son métier ?</label>
+      <input type="text" id="metier" name="metier" required />
+
+      <!-- Heure du décès -->
+      <label for="heure">À quelle heure est-elle morte ?</label>
+      <input type="text" id="heure" name="heure" required />
+
+      <!-- Arme du crime -->
+      <fieldset>
+        <legend>Quelle est l’arme du crime ?</legend>
+        <label><input type="radio" name="arme" value="bouteille" required /> Bouteille</label><br>
+        <label><input type="radio" name="arme" value="ceinture" /> Ceinture</label><br>
+        <label><input type="radio" name="arme" value="lampe" /> Lampe</label><br>
+        <label><input type="radio" name="arme" value="couteau" /> Couteau</label>
+      </fieldset>
+
+      <button type="submit" id="goToNext">Envoyer le rapport</button>
+    </form>
+  </main>
+</body>
+</html>
