@@ -204,7 +204,6 @@ button:hover {
   text-align: center;
   font-family: 'Special Elite', monospace;
   color: #000000;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
 }
 
 .remerciement-text em {
@@ -240,19 +239,21 @@ button:hover {
 }
 
 .end-button.avis {
-  background-color: #00ff91;
-  color: #000;
-}
-.end-button.avis:hover {
-  background-color: #00cc73;
-  box-shadow: 0 0 18px #00ff91;
+  background-color: #2EC27E;
+  color: #fff;
 }
 
+.end-button.avis:hover {
+  background-color: #27a66d;
+  box-shadow: 0 0 18px #2EC27E;
+}
+
+
 .end-button.autres {
-  background-color: #fff;
-  color: #000;
+  background-color:#000000;
+  color: #ffffff;
 }
 .end-button.autres:hover {
-  background-color: #e0e0e0;
-  box-shadow: 0 0 18px #ffffff;
+  background-color: #000000;
+  box-shadow: 0 0 18px #000000;
 }
