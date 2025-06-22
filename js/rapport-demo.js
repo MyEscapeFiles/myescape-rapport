@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const validations = {
     nom: "collombel",
     prenom: "elsa",
-    age: "29",
+    age: "28",
     metier: "influenceuse beauté",
     heure: ["20h", "20h00", "20h01"],
     arme: "lampe"
