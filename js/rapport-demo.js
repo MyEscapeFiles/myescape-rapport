@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     nom: "collombel",
     prenom: "elsa",
     age: "28",
-    metier: "influenceuse beauté",
+    metier: ["influenceuse", "influenceuse beauté"],
     heure: ["20h", "20h00", "20h01"],
     arme: "lampe"
   };
@@ -68,11 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // MÉTIER
-    const metier = document.getElementById("metier");
-    if (metier.value.trim().toLowerCase() !== validations.metier) {
-      showErrorAfter(metier);
-      errors++;
+    const metierVal = metier.value.trim().toLowerCase();
+    if (!validations.metier.includes(metierVal)) {
+  showErrorAfter(metier);
+  errors++;
     }
+
 
     // HEURE
     const heure = document.getElementById("heure");
