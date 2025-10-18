@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapport d'enquête – HALLOWEEN</title>
+  <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+</head>
+
+<body>
+  <div id="transition-screen">
+    <div class="transition-content">
+      <div id="transition-timer">60:00</div>
+      <p>Le temps presse...</p>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Accueil</a></li>
+        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
+        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Section indice</a></li>
+        <li><a href="https://myescape.fr/pages/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Rapport d'enquête – HALLOWEEN</h1>
+
+    <div class="video-container">
+      <iframe 
+        class="video-embed"
+        src="https://www.youtube.com/embed/xxxxxxxxxxx"
+        title="Vidéo du grenier – Page 4"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <p class="alt-video">
+        Si la vidéo ne s’affiche pas, <a href="https://www.youtube.com/watch?v=xxxxxxxxxxx" target="_blank" rel="noopener noreferrer">cliquez ici</a>.
+      </p>
+    </div>
+
+    <form id="questionnaire">
+      <h2>Page 4 – Le grenier</h2>
+
+      <label for="mot">Quel est le mot qui permet de briser la malédiction ?</label>
+      <input type="text" id="mot" name="mot" required />
+
+      <button type="submit" id="goToNext">Envoyer le rapport</button>
+    </form>
+  </main>
+
+  <div id="timer"></div>
+
+  <script src="../../js/halloween_global.js"></script>
+  <script src="../../js/halloween_4.js"></script>
+</body>
+</html>
