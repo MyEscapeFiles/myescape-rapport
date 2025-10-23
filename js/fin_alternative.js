@@ -9,7 +9,7 @@ localStorage.setItem("lastPage", window.location.href);
 // === RESET DU CHRONO UNIQUEMENT AU DÉBUT DU JEU ===
 if (window.location.pathname.includes("halloween_01.html")) {
   localStorage.removeItem("escapeStart");
-  localStorage.removeItem("justReturned"); // on nettoie le flag
+  localStorage.removeItem("justReturned"); // on nettoie le flag si retour au début
 }
 
 // === INITIALISATION DU CHRONO ===
@@ -21,16 +21,21 @@ function startTimer() {
   setInterval(updateTimer, 1000);
 }
 
-// === MISE À JOUR DU CHRONO ===
+// === MISE À JOUR DU CHRONO PRINCIPAL ===
 function updateTimer() {
   const start = parseInt(localStorage.getItem("escapeStart"), 10);
   const elapsed = Date.now() - start;
   const timeLeft = DURATION - elapsed;
 
-  // si le temps est écoulé et qu'on ne vient pas juste du piano → redirection
+  // Si le chrono est écoulé ET qu'on ne vient pas du piano, on redirige
   if (timeLeft <= 0 && !localStorage.getItem("justReturned")) {
     window.location.href = END_PAGE;
     return;
+  }
+
+  // Si on vient du piano, on supprime le flag après quelques secondes
+  if (localStorage.getItem("justReturned")) {
+    setTimeout(() => localStorage.removeItem("justReturned"), 3000);
   }
 
   const minutes = Math.floor(timeLeft / 60000);
@@ -40,6 +45,21 @@ function updateTimer() {
   if (timerEl) {
     timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
   }
+}
+
+// === MISE À JOUR DU CHRONO DANS LES ÉCRANS DE TRANSITION ===
+function updateTransitionTimer() {
+  const timerOverlay = document.getElementById("transition-timer");
+  if (!timerOverlay) return;
+
+  const start = parseInt(localStorage.getItem("escapeStart"), 10);
+  const elapsed = Date.now() - start;
+  const timeLeft = DURATION - elapsed;
+
+  const minutes = Math.max(Math.floor(timeLeft / 60000), 0);
+  const seconds = Math.max(Math.floor((timeLeft % 60000) / 1000), 0);
+
+  timerOverlay.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
 // === LANCEMENT ===

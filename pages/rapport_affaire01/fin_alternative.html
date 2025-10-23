@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fin Alternative – Halloween</title>
+  <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+  <style>
+    body {
+      background: radial-gradient(circle at center, #000 60%, #1a0a00 100%);
+      color: #ff6600;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 56px;
+      text-shadow: 0 0 20px #ff4000;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #ffb74d;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    .piano {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .key {
+      width: 80px;
+      height: 220px;
+      background: linear-gradient(to bottom, #fff 0%, #ccc 100%);
+      border: 2px solid #000;
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 5px 8px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .key:hover {
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.7);
+    }
+
+    .key.active {
+      background: #ff6600;
+      transform: scale(0.95);
+      box-shadow: 0 0 25px #ff4500;
+    }
+
+    #message {
+      font-size: 26px;
+      color: #ff6600;
+      margin-top: 40px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    #message.visible {
+      opacity: 1;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 40px;
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .key {
+        width: 65px;
+        height: 160px;
+      }
+
+      #message {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .piano {
+        gap: 6px;
+      }
+
+      .key {
+        width: 55px;
+        height: 140px;
+      }
+
+      #message {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Temps écoulé...</h1>
+    <p>Vous n’avez pas réussi à briser la malédiction à temps.<br>
+    Mais peut-être reste-t-il une dernière chance...</p>
+
+    <div class="piano">
+      <div class="key" data-note="1"></div>
+      <div class="key" data-note="2"></div>
+      <div class="key" data-note="3"></div>
+      <div class="key" data-note="4"></div>
+    </div>
+
+    <p id="message"></p>
+  </main>
+
+  <script src="../../js/fin_alternative.js"></script>
+</body>
+</html>
