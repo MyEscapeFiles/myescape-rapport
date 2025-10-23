@@ -2,7 +2,7 @@ document.getElementById("questionnaire").addEventListener("submit", e => {
   e.preventDefault();
   const reponse = document.getElementById("heure").value.trim().toLowerCase();
 
-  if (reponse === "21h36" || reponse === "21:36") {
+  if (reponse === "23H19" || reponse === "23:19" || reponse === "23h19") {
     const overlay = document.getElementById("transition-screen");
     overlay.classList.add("active");
 
