@@ -3,61 +3,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rapport d'enquête – HALLOWEEN 05 (La fin)</title>
+  <title>HALLOWEEN 06 – Vidéo finale</title>
   <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      letter-spacing: 3px;
+      color: #ff3c00;
+      text-shadow: 0 0 25px rgba(255, 80, 0, 0.8);
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      max-width: 900px;
+      width: 90%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 120, 0, 0.25);
+    }
+
+    .video-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+
+    p {
+      font-size: 22px;
+      color: #ffb74d;
+      margin-top: 25px;
+      text-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+    }
+
+    .rejouer {
+      margin-top: 40px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: 2px solid #ff3c00;
+      background: transparent;
+      color: #ff3c00;
+      text-transform: uppercase;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .rejouer:hover {
+      background: #ff3c00;
+      color: #000;
+      box-shadow: 0 0 20px #ff3c00;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Écran de transition -->
-  <div id="transition-screen">
-    <div class="transition-content">
-      <p>Le temps presse...</p>
-    </div>
-  </div>
-
-  <!-- En-tête -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="../../index.html">Accueil</a></li>
-        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
-        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Section indice</a></li>
-        <li><a href="https://myescape.fr/pages/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Contenu principal -->
   <main>
-    <h1>Rapport d'enquête – HALLOWEEN 05 : La fin</h1>
+    <h1>Fin de l’enquête</h1>
 
     <div class="video-container">
       <iframe 
         class="video-embed"
-        src="https://www.youtube.com/embed/xxxxxxxxxxx"
-        title="Vidéo finale – Page 5"
+        src="https://www.youtube.com/embed/xxxxxxxxxxx?autoplay=1"
+        title="Vidéo finale – Conclusion du jeu"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <p class="alt-video">
-        Si la vidéo ne s’affiche pas, 
-        <a href="https://www.youtube.com/watch?v=xxxxxxxxxxx" target="_blank" rel="noopener noreferrer">cliquez ici</a>.
-      </p>
     </div>
 
-    <form id="questionnaire">
-      <h2>Page 5 – La fin</h2>
-      <label for="phrase">Quelle est la phrase pour sortir ?</label>
-      <textarea id="phrase" name="phrase" rows="3" required></textarea>
-      <button type="submit" id="goToNext">Envoyer le rapport</button>
-    </form>
+    <p>Merci d’avoir joué à <strong>MyEscape – Halloween</strong>.</p>
+
+    <button class="rejouer" onclick="window.location.href='../../index.html'">Rejouer</button>
   </main>
-
-  <div id="timer"></div>
-
-  <!-- Scripts -->
-  <script src="../../js/halloween_global.js"></script>
-  <script src="../../js/halloween_5.js"></script>
 </body>
 </html>

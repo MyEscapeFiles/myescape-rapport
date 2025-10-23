@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fin Définitive – Halloween</title>
+  <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+  <style>
+    body {
+      background: radial-gradient(circle at center, #000 60%, #1a0000 100%);
+      color: #ff6600;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 72px;
+      text-shadow: 0 0 30px #ff0000;
+      color: #ff3300;
+      margin-bottom: 20px;
+      animation: flicker 2.2s infinite alternate;
+    }
+
+    p {
+      font-size: 22px;
+      color: #ffb74d;
+      max-width: 700px;
+      line-height: 1.5;
+      text-shadow: 0 0 15px rgba(255, 80, 0, 0.5);
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff3300, #660000);
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 50, 0, 0.7);
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; text-shadow: 0 0 30px #ff0000; }
+      50% { opacity: 0.8; text-shadow: 0 0 50px #ff2200; }
+      100% { opacity: 1; text-shadow: 0 0 40px #ff3300; }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 48px;
+      }
+      p {
+        font-size: 18px;
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Fin Définitive</h1>
+    <p>
+      Le temps s’est écoulé... et la maison s’est refermée sur vous.<br><br>
+      Les rires des sorcières résonnent à nouveau entre les murs.<br>
+      Le rituel est complet, et aucun agent ne ressortira jamais d’ici.
+    </p>
+
+    <button onclick="window.location.href='../../index.html'">
+      Retourner à l'accueil
+    </button>
+  </main>
+
+</body>
+</html>

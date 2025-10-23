@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halloween – MyEscape</title>
+  <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+  <style>
+    body {
+      background: radial-gradient(circle at center, #000 60%, #1a0a00 100%);
+      color: #ff6600;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 25px #ff3300;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .video-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto 40px;
+      opacity: 0;
+      animation: fadeIn 1.2s ease 0.5s forwards;
+    }
+
+    .video-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      border: 2px solid #ff6600;
+      box-shadow: 0 0 20px rgba(255, 100, 0, 0.6);
+    }
+
+    button {
+      background: #ff6600;
+      color: #fff;
+      border: none;
+      padding: 16px 36px;
+      font-size: 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 100, 0, 0.5);
+      opacity: 0;
+      animation: fadeIn 1s ease 1.3s forwards;
+    }
+
+    button:hover {
+      background: #ff3300;
+      transform: scale(1.05);
+    }
+
+    p.alt-video {
+      color: #ffb74d;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #ffb74d;
+      text-decoration: underline;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 40px;
+      }
+
+      button {
+        font-size: 20px;
+        padding: 14px 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      button {
+        font-size: 18px;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <h1>Affaire Halloween</h1>
+
+    <div class="video-container">
+      <iframe
+        class="video-embed"
+        src="https://www.youtube.com/embed/INunYAbGWIE"
+        title="Introduction à l'affaire Halloween"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
+      <p class="alt-video">
+        Si la vidéo ne s’affiche pas,
+        <a href="https://youtu.be/INunYAbGWIE?si=v4MRqa_LMsv4aBqo" target="_blank" rel="noopener noreferrer">cliquez ici</a>.
+      </p>
+    </div>
+
+    <button onclick="window.location.href='./halloween_01.html'">Entrer dans la maison</button>
+  </main>
+
+</body>
+</html>
