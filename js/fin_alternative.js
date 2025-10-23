@@ -6,7 +6,6 @@ const sounds = {
   4: new Audio("../../sounds/4.mp3")
 };
 
-// Précharge les sons
 Object.values(sounds).forEach(s => s.load());
 
 // Séquence correcte
@@ -16,7 +15,7 @@ let playerSequence = [];
 const keys = document.querySelectorAll(".key");
 const message = document.getElementById("message");
 
-// === Compteur de touches ===
+// === Compteur ===
 const counter = document.createElement("p");
 counter.id = "counter";
 counter.style.fontSize = "22px";
@@ -30,7 +29,7 @@ keys.forEach(key => {
     const note = key.dataset.note;
     playerSequence.push(note);
 
-    // Effet visuel + son
+    // Son + effet
     key.classList.add("active");
     const sound = sounds[note];
     if (sound) {
@@ -39,31 +38,28 @@ keys.forEach(key => {
     }
     setTimeout(() => key.classList.remove("active"), 150);
 
-    // Met à jour le compteur
+    // Mise à jour compteur
     counter.textContent = `Touches jouées : ${playerSequence.length}/4`;
 
-    // Quand 4 notes sont jouées
     if (playerSequence.length === 4) {
       if (playerSequence.join("") === correctSequence.join("")) {
-        message.textContent = "✨ Une porte s’ouvre… Vous sentez l’air frais de la liberté.";
+        message.textContent = "✨ Une porte s’ouvre… Vous avez 20 minutes pour sortir.";
         message.classList.add("visible");
 
-        // 🔁 Ajoute 20 minutes au chrono global
-        const start = parseInt(localStorage.getItem("escapeStart"), 10);
-        localStorage.setItem("escapeStart", start - 20 * 60 * 1000);
+        // ✅ Lance un nouveau chrono de 20 minutes
+        localStorage.removeItem("escapeStart");
         localStorage.setItem("justReturned", "true");
 
-        // ✅ Ne plus rediriger vers la page du piano
         setTimeout(() => {
           const lastPage = localStorage.getItem("lastPage") || "../../index.html";
           window.location.href = lastPage;
-        }, 2500);
+        }, 3000);
       } else {
         message.textContent = "❌ La séquence est incorrecte... Recommencez.";
         message.classList.add("visible");
       }
 
-      // Réinitialise le compteur et la séquence
+      // Reset
       playerSequence = [];
       counter.textContent = "Touches jouées : 0/4";
     }
