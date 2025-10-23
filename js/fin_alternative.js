@@ -1,66 +1,49 @@
-// === CONFIGURATION ===
-const DURATION = 60 * 60 * 1000; // 1 heure
-const EXTENSION = 20 * 60 * 1000; // +20 minutes
-const END_PAGE = "../../pages/rapport_affaire01/fin_alternative.html";
+const sounds = {
+  1: new Audio("../../sounds/1.mp3"),
+  2: new Audio("../../sounds/2.mp3"),
+  3: new Audio("../../sounds/3.mp3"),
+  4: new Audio("../../sounds/4.mp3")
+};
 
-// === SAUVEGARDE DE LA PAGE ACTUELLE ===
-localStorage.setItem("lastPage", window.location.href);
+// Séquence correcte
+const correctSequence = ["3", "1", "4", "2"];
+let playerSequence = [];
 
-// === RESET DU CHRONO UNIQUEMENT AU DÉBUT DU JEU ===
-if (window.location.pathname.includes("halloween_01.html")) {
-  localStorage.removeItem("escapeStart");
-  localStorage.removeItem("justReturned"); // on nettoie le flag si retour au début
-}
+const keys = document.querySelectorAll(".key");
+const message = document.getElementById("message");
 
-// === INITIALISATION DU CHRONO ===
-function startTimer() {
-  if (!localStorage.getItem("escapeStart")) {
-    localStorage.setItem("escapeStart", Date.now());
-  }
-  updateTimer();
-  setInterval(updateTimer, 1000);
-}
+keys.forEach(key => {
+  key.addEventListener("click", () => {
+    const note = key.dataset.note;
+    playerSequence.push(note);
 
-// === MISE À JOUR DU CHRONO PRINCIPAL ===
-function updateTimer() {
-  const start = parseInt(localStorage.getItem("escapeStart"), 10);
-  const elapsed = Date.now() - start;
-  const timeLeft = DURATION - elapsed;
+    // Effet visuel + son
+    key.classList.add("active");
+    sounds[note]?.play();
+    setTimeout(() => key.classList.remove("active"), 150);
 
-  // Si le chrono est écoulé ET qu'on ne vient pas du piano, on redirige
-  if (timeLeft <= 0 && !localStorage.getItem("justReturned")) {
-    window.location.href = END_PAGE;
-    return;
-  }
+    // Quand 4 notes sont jouées
+    if (playerSequence.length === 4) {
+      if (playerSequence.join("") === correctSequence.join("")) {
+        message.textContent = "✨ Une porte s’ouvre… Vous sentez l’air frais de la liberté.";
+        message.classList.add("visible");
 
-  // Si on vient du piano, on supprime le flag après quelques secondes
-  if (localStorage.getItem("justReturned")) {
-    setTimeout(() => localStorage.removeItem("justReturned"), 3000);
-  }
+        // Ajoute 20 minutes au chrono
+        const start = parseInt(localStorage.getItem("escapeStart"), 10);
+        localStorage.setItem("escapeStart", start - 20 * 60 * 1000);
+        localStorage.setItem("justReturned", "true");
 
-  const minutes = Math.floor(timeLeft / 60000);
-  const seconds = Math.floor((timeLeft % 60000) / 1000);
+        // Retourne à la dernière page du joueur
+        setTimeout(() => {
+          const lastPage = localStorage.getItem("lastPage") || "../../index.html";
+          window.location.href = lastPage;
+        }, 2500);
+      } else {
+        message.textContent = "❌ La séquence est incorrecte...";
+        message.classList.add("visible");
+      }
 
-  const timerEl = document.getElementById("timer");
-  if (timerEl) {
-    timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  }
-}
-
-// === MISE À JOUR DU CHRONO DANS LES ÉCRANS DE TRANSITION ===
-function updateTransitionTimer() {
-  const timerOverlay = document.getElementById("transition-timer");
-  if (!timerOverlay) return;
-
-  const start = parseInt(localStorage.getItem("escapeStart"), 10);
-  const elapsed = Date.now() - start;
-  const timeLeft = DURATION - elapsed;
-
-  const minutes = Math.max(Math.floor(timeLeft / 60000), 0);
-  const seconds = Math.max(Math.floor((timeLeft % 60000) / 1000), 0);
-
-  timerOverlay.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-}
-
-// === LANCEMENT ===
-startTimer();
+      playerSequence = []; // reset
+    }
+  });
+});
