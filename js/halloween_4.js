@@ -2,7 +2,7 @@ document.getElementById("questionnaire").addEventListener("submit", e => {
   e.preventDefault();
   const reponse = document.getElementById("mot").value.trim().toLowerCase();
 
-  if (reponse === "emunda") {
+  if (reponse === "emunda" || reponse === "EMUNDA") {
     const overlay = document.getElementById("transition-screen");
     overlay.classList.add("active");
 
