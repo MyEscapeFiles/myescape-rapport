@@ -8,7 +8,7 @@
   <style>
     body {
       background: radial-gradient(circle at center, #000 60%, #1a0a00 100%);
-      color: #ff6600;
+      color: #ffb74d;
       text-align: center;
       font-family: 'Bebas Neue', sans-serif;
       min-height: 100vh;
@@ -17,122 +17,121 @@
       justify-content: center;
       align-items: center;
       margin: 0;
-      padding: 20px;
+      padding: 5vw;
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
     }
 
     h1 {
-      font-size: 56px;
-      text-shadow: 0 0 20px #ff4000;
-      margin-bottom: 10px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-shadow: 0 0 25px #ff4000;
+      margin-bottom: 0.5em;
+      color: #ff6600;
     }
 
     h2 {
-      font-size: 26px;
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
       color: #ffb74d;
-      margin-bottom: 40px;
+      margin-bottom: 2em;
       letter-spacing: 1px;
-      text-shadow: 0 0 10px rgba(255, 102, 0, 0.3);
+      text-shadow: 0 0 10px rgba(255, 102, 0, 0.4);
     }
 
     p {
-      font-size: 20px;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       color: #ffb74d;
-      margin-bottom: 40px;
-      line-height: 1.4;
+      margin-bottom: 2em;
+      line-height: 1.5;
     }
 
     .piano {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 10px;
+      gap: 1rem;
       flex-wrap: wrap;
       margin-top: 20px;
     }
 
     .key {
-      width: 80px;
-      height: 220px;
+      width: clamp(55px, 16vw, 90px);
+      height: clamp(120px, 35vw, 240px);
       background: linear-gradient(to bottom, #fff 0%, #ccc 100%);
       border: 2px solid #000;
       border-radius: 0 0 6px 6px;
       box-shadow: 0 5px 8px rgba(0,0,0,0.5);
       cursor: pointer;
       transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.3s ease;
+      flex: 1 1 auto;
+      max-width: 22%;
     }
 
     .key:hover {
-      box-shadow: 0 0 20px rgba(255, 102, 0, 0.7);
+      box-shadow: 0 0 25px rgba(255, 102, 0, 0.8);
     }
 
     .key.active {
       background: #ff6600;
-      transform: scale(0.95);
+      transform: scale(0.96);
       box-shadow: 0 0 25px #ff4500;
     }
 
     #message {
-      font-size: 26px;
+      font-size: clamp(1rem, 3vw, 1.6rem);
       color: #ff6600;
-      margin-top: 40px;
+      margin-top: 1.8em;
       opacity: 0;
       transition: opacity 0.8s ease;
+      min-height: 1.2em;
     }
 
     #message.visible {
       opacity: 1;
     }
 
-    /* === Responsive === */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 40px;
-      }
-
-      h2 {
-        font-size: 22px;
-        margin-bottom: 30px;
-      }
-
-      p {
-        font-size: 18px;
-        margin-bottom: 30px;
-      }
-
-      .key {
-        width: 65px;
-        height: 160px;
-      }
-
-      #message {
-        font-size: 22px;
-      }
+    /* Compteur (Touches jouées) */
+    #counter {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: #ffaa00;
+      margin-top: 1em;
+      text-shadow: 0 0 10px rgba(255, 120, 0, 0.4);
     }
 
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 32px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      p {
-        font-size: 16px;
+    /* === Responsive extra === */
+    @media (max-width: 600px) {
+      body {
+        padding: 7vw 4vw;
       }
 
       .piano {
-        gap: 6px;
+        gap: 0.6rem;
       }
 
       .key {
-        width: 55px;
-        height: 140px;
+        max-width: 20%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .key {
+        width: 50px;
+        height: 120px;
+        max-width: 22%;
       }
 
-      #message {
-        font-size: 20px;
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -155,6 +154,15 @@
 
     <p id="message"></p>
   </main>
+
+  <script>
+// Empêche de revenir à la page précédente
+window.history.pushState(null, "", window.location.href);
+window.onpopstate = function () {
+  window.history.pushState(null, "", window.location.href);
+  alert("🚪 Impossible de revenir en arrière... la porte s’est refermée.");
+};
+</script>
 
   <script src="../../js/fin_alternative.js"></script>
 </body>
