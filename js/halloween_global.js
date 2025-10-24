@@ -1,72 +1,69 @@
-// === CONFIGURATION ===
-const NORMAL_DURATION = 60 * 60 * 1000;   // 1h de jeu
-const BONUS_DURATION = 20 * 60 * 1000;    // 20 min après réussite du piano
-const END_PAGE = "../../pages/rapport_affaire01/fin_alternative.html"; // fin temporaire (piano)
-const FINAL_END_PAGE = "../../pages/rapport_affaire01/fin_definitive.html"; // fin définitive
+// === CONFIG ===
+const NORMAL_DURATION = 60 * 60 * 1000;   // 60 min
+const BONUS_DURATION  = 20 * 60 * 1000;   // 20 min
+const PIANO_PAGE      = "../../pages/rapport_affaire01/fin_alternative.html";
+const FINAL_END_PAGE  = "../../pages/rapport_affaire01/fin_definitive.html";
 
-// === SAUVEGARDE DE LA PAGE ACTUELLE (sauf le piano) ===
-if (!window.location.pathname.includes("fin_alternative.html")) {
-  localStorage.setItem("lastPage", window.location.href);
+// Sauvegarde en continu la page courante (sauf le piano)
+if (!location.pathname.includes("fin_alternative.html")) {
+  localStorage.setItem("lastPage", location.href);
 }
 
-// === RESET AU DÉBUT DU JEU ===
-if (window.location.pathname.includes("halloween_01.html")) {
+// Reset au tout début du jeu
+if (location.pathname.includes("halloween_01.html")) {
   localStorage.removeItem("escapeStart");
   localStorage.removeItem("escapeDuration");
   localStorage.removeItem("justReturned");
   localStorage.removeItem("cameFromPiano");
 }
 
-// === INITIALISATION DU CHRONO ===
+// --- démarrage ---
 function startTimer() {
   const now = Date.now();
 
-  // ✅ Cas 1 : retour du piano → on démarre un NOUVEAU chrono de 20 min
+  // Si on revient du piano -> on lance le NOUVEAU chrono de 20 min
   if (localStorage.getItem("justReturned")) {
     localStorage.setItem("escapeStart", now);
-    localStorage.setItem("escapeDuration", BONUS_DURATION);
+    localStorage.setItem("escapeDuration", String(BONUS_DURATION));
     localStorage.setItem("cameFromPiano", "true");
     localStorage.removeItem("justReturned");
   }
 
-  // ✅ Cas 2 : aucun chrono actif → on démarre le chrono principal (1h)
+  // Si aucun chrono actif -> chrono principal 60 min
   if (!localStorage.getItem("escapeStart")) {
-    localStorage.setItem("escapeStart", now);
-    localStorage.setItem("escapeDuration", NORMAL_DURATION);
+    localStorage.setItem("escapeStart", String(now));
+    localStorage.setItem("escapeDuration", String(NORMAL_DURATION));
   }
 
   updateTimer();
   setInterval(updateTimer, 1000);
 }
 
-// === MISE À JOUR DU CHRONO ===
 function updateTimer() {
-  const start = parseInt(localStorage.getItem("escapeStart"), 10);
-  const duration = parseInt(localStorage.getItem("escapeDuration"), 10);
+  const start    = parseInt(localStorage.getItem("escapeStart")   || "0", 10);
+  const duration = parseInt(localStorage.getItem("escapeDuration")|| "0", 10);
   if (!start || !duration) return;
 
-  const elapsed = Date.now() - start;
+  const elapsed  = Date.now() - start;
   const timeLeft = duration - elapsed;
 
   if (timeLeft <= 0) {
-    // Si le joueur avait déjà eu le bonus → fin définitive
+    // Si on était déjà en bonus -> FIN DÉFINITIVE
     if (localStorage.getItem("cameFromPiano")) {
-      window.location.href = FINAL_END_PAGE;
+      location.href = FINAL_END_PAGE;
     } else {
-      // Sinon → première fin (le piano)
-      window.location.href = END_PAGE;
+      // Sinon -> 1ère fin (piano). On fige la page où ça s'est arrêté
+      localStorage.setItem("lastPage", location.href);
+      location.href = PIANO_PAGE;
     }
     return;
   }
 
-  const minutes = Math.floor(timeLeft / 60000);
-  const seconds = Math.floor((timeLeft % 60000) / 1000);
-  const timerEl = document.getElementById("timer");
-
-  if (timerEl) {
-    timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
-  }
+  // Affichage du timer si présent
+  const m = Math.floor(timeLeft / 60000);
+  const s = Math.floor((timeLeft % 60000) / 1000);
+  const el = document.getElementById("timer");
+  if (el) el.textContent = `${m}:${s.toString().padStart(2, "0")}`;
 }
 
-// === LANCEMENT ===
 startTimer();
