@@ -5,6 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rapport d'enquête – HALLOWEEN 04</title>
   <link rel="stylesheet" href="../../css/rapporthalloween.css" />
+  <style>
+    /* Styles des cadres colorés */
+    .phrase-box {
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .rouge {
+      background: linear-gradient(135deg, #8b0000, #b22222);
+      border: 2px solid #ff4444;
+    }
+
+    .vert {
+      background: linear-gradient(135deg, #004d00, #0c8a0c);
+      border: 2px solid #33ff66;
+    }
+
+    .bleu {
+      background: linear-gradient(135deg, #002b63, #004c99);
+      border: 2px solid #66ccff;
+    }
+
+    textarea {
+      width: 100%;
+      resize: none;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      font-family: inherit;
+      margin-top: 10px;
+      background: rgba(0,0,0,0.2);
+      color: #fff;
+    }
+
+    textarea::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 24px;
+      background: #ff6600;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ffa040;
+      transform: scale(1.05);
+    }
+
+    #error-msg {
+      color: #ff4444;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
 </head>
 
 <body>
@@ -16,19 +85,6 @@
     </div>
   </div>
 
-  <!-- En-tête -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="../../index.html">Accueil</a></li>
-        <li><a href="https://myescape.fr/collections/all" target="_blank" rel="noopener noreferrer">Jeux</a></li>
-        <li><a href="https://myescape.fr/pages/section-indice" target="_blank" rel="noopener noreferrer">Section indice</a></li>
-        <li><a href="https://myescape.fr/pages/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Contenu principal -->
   <main>
     <h1>Rapport d'enquête – HALLOWEEN 04</h1>
 
@@ -41,10 +97,6 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <p class="alt-video">
-        Si la vidéo ne s’affiche pas, 
-        <a href="https://youtu.be/pvkC37QViF8?si=UJBG1ff0bEAOexu2" target="_blank" rel="noopener noreferrer">cliquez ici</a>.
-      </p>
     </div>
 
     <form id="questionnaire">
@@ -53,16 +105,30 @@
       <label for="mot">Quel est le mot qui permet de briser la malédiction ?</label>
       <input type="text" id="mot" name="mot" required />
 
-      <label for="phrase">Quelle phrase vous permet de sortir de la maison ?</label>
-      <textarea id="phrase" name="phrase" rows="3" required></textarea>
+      <p>Écrivez les 3 incantations qui lèvent la malédiction :</p>
+
+      <div class="phrase-box rouge">
+        <label for="phrase1">1.</label>
+        <textarea id="phrase1" rows="2" placeholder="..."></textarea>
+      </div>
+
+      <div class="phrase-box vert">
+        <label for="phrase2">2.</label>
+        <textarea id="phrase2" rows="2" placeholder="..."></textarea>
+      </div>
+
+      <div class="phrase-box bleu">
+        <label for="phrase3">3.</label>
+        <textarea id="phrase3" rows="2" placeholder="..."></textarea>
+      </div>
 
       <button type="submit" id="goToNext">Envoyer le rapport</button>
+      <p id="error-msg"></p>
     </form>
   </main>
 
   <div id="timer"></div>
 
-  <!-- Scripts -->
   <script src="../../js/halloween_global.js"></script>
   <script src="../../js/halloween_4.js"></script>
 
