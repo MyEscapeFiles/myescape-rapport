@@ -1,8 +1,8 @@
 // === CONFIGURATION ===
-const NORMAL_DURATION = 10 * 1000;      // 1h de jeu
-const BONUS_DURATION = 10 * 1000;       // 20 min après réussite du piano
-const END_PAGE = "../../pages/rapport_affaire01/fin_alternative.html";       // fin temporaire (piano)
-const FINAL_END_PAGE = "../../pages/rapport_affaire01/fin_definitive.html";  // fin définitive
+const NORMAL_DURATION = 60 * 60 * 1000;  // 1h de jeu
+const BONUS_DURATION = 20 * 60 * 1000;   // 20 min après réussite du piano
+const END_PAGE = "../../pages/rapport_affaire01/fin_alternative.html"; // fin temporaire (piano)
+const FINAL_END_PAGE = "../../pages/rapport_affaire01/fin_definitive.html"; // fin définitive
 
 // === SAUVEGARDE DE LA PAGE ACTUELLE (sauf le piano) ===
 if (!window.location.pathname.includes("fin_alternative.html")) {

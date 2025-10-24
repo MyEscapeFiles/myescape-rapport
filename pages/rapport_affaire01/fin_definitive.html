@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../../css/rapporthalloween.css" />
   <style>
     body {
-      background: radial-gradient(circle at center, #000 60%, #1a0000 100%);
+      background: radial-gradient(circle at center, #000 60%, #200000 100%);
       color: #ff6600;
       text-align: center;
       font-family: 'Bebas Neue', sans-serif;
@@ -18,58 +18,81 @@
       align-items: center;
       overflow: hidden;
       margin: 0;
-      padding: 20px;
+      padding: 5vw;
+      animation: pulseBg 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseBg {
+      0% { background: radial-gradient(circle at center, #000 60%, #1a0000 100%); }
+      100% { background: radial-gradient(circle at center, #100000 40%, #330000 100%); }
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
     }
 
     h1 {
-      font-size: 72px;
-      text-shadow: 0 0 30px #ff0000;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      text-shadow: 0 0 35px #ff0000, 0 0 10px #ff2200;
       color: #ff3300;
-      margin-bottom: 20px;
-      animation: flicker 2.2s infinite alternate;
+      margin-bottom: 0.6em;
+      animation: flicker 2.5s infinite alternate ease-in-out;
+      letter-spacing: 2px;
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; text-shadow: 0 0 30px #ff0000; }
+      50% { opacity: 0.85; text-shadow: 0 0 45px #ff2200; }
     }
 
     p {
-      font-size: 22px;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: #ffb74d;
       max-width: 700px;
-      line-height: 1.5;
-      text-shadow: 0 0 15px rgba(255, 80, 0, 0.5);
+      margin: 0 auto 2em;
+      line-height: 1.6;
+      text-shadow: 0 0 15px rgba(255, 80, 0, 0.4);
     }
 
     button {
       margin-top: 40px;
-      padding: 14px 28px;
-      font-size: 18px;
+      padding: 14px 32px;
+      font-size: clamp(1rem, 3vw, 1.2rem);
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: linear-gradient(90deg, #ff3300, #660000);
       color: #fff;
       font-weight: bold;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
       text-transform: uppercase;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+      letter-spacing: 1px;
     }
 
     button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 50, 0, 0.7);
+      transform: scale(1.08);
+      box-shadow: 0 0 35px rgba(255, 50, 0, 0.8);
     }
 
-    @keyframes flicker {
-      0% { opacity: 1; text-shadow: 0 0 30px #ff0000; }
-      50% { opacity: 0.8; text-shadow: 0 0 50px #ff2200; }
-      100% { opacity: 1; text-shadow: 0 0 40px #ff3300; }
-    }
-
+    /* Mobile ajustements */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 48px;
+      body {
+        padding: 10vw 5vw;
       }
+
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.8em;
+      }
+
       p {
-        font-size: 18px;
-        padding: 0 10px;
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 12px 24px;
       }
     }
   </style>
