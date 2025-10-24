@@ -1,6 +1,6 @@
 // === CONFIGURATION ===
-const NORMAL_DURATION = 60 * 60 * 1000;  // 1h de jeu
-const BONUS_DURATION = 20 * 60 * 1000;   // 20 min après réussite du piano
+const NORMAL_DURATION = 20 * 20 * 1000;   // 1h de jeu
+const BONUS_DURATION = 20 * 60 * 1000;    // 20 min après réussite du piano
 const END_PAGE = "../../pages/rapport_affaire01/fin_alternative.html"; // fin temporaire (piano)
 const FINAL_END_PAGE = "../../pages/rapport_affaire01/fin_definitive.html"; // fin définitive
 
@@ -21,20 +21,18 @@ if (window.location.pathname.includes("halloween_01.html")) {
 function startTimer() {
   const now = Date.now();
 
-  // Si aucun chrono n'existe → création
-  if (!localStorage.getItem("escapeStart")) {
-    const duration = localStorage.getItem("justReturned")
-      ? BONUS_DURATION
-      : NORMAL_DURATION;
-
+  // ✅ Cas 1 : retour du piano → on démarre un NOUVEAU chrono de 20 min
+  if (localStorage.getItem("justReturned")) {
     localStorage.setItem("escapeStart", now);
-    localStorage.setItem("escapeDuration", duration);
+    localStorage.setItem("escapeDuration", BONUS_DURATION);
+    localStorage.setItem("cameFromPiano", "true");
+    localStorage.removeItem("justReturned");
+  }
 
-    // Si on vient du piano, on le marque pour savoir que le prochain échec = fin définitive
-    if (localStorage.getItem("justReturned")) {
-      localStorage.setItem("cameFromPiano", "true");
-      localStorage.removeItem("justReturned");
-    }
+  // ✅ Cas 2 : aucun chrono actif → on démarre le chrono principal (1h)
+  if (!localStorage.getItem("escapeStart")) {
+    localStorage.setItem("escapeStart", now);
+    localStorage.setItem("escapeDuration", NORMAL_DURATION);
   }
 
   updateTimer();
@@ -51,7 +49,7 @@ function updateTimer() {
   const timeLeft = duration - elapsed;
 
   if (timeLeft <= 0) {
-    // Si le joueur avait déjà eu le bonus → vraie fin
+    // Si le joueur avait déjà eu le bonus → fin définitive
     if (localStorage.getItem("cameFromPiano")) {
       window.location.href = FINAL_END_PAGE;
     } else {
