@@ -1,6 +1,6 @@
 // === CONFIG ===
-const NORMAL_DURATION = 60 * 60 * 1000;   // 60 min
-const BONUS_DURATION  = 20 * 60 * 1000;   // 20 min
+const NORMAL_DURATION = 30 * 60 * 1000;   // 30 min
+const BONUS_DURATION  = 30 * 60 * 1000;   // 30 min
 const PIANO_PAGE      = "../../pages/rapport_affaire01/fin_alternative.html";
 const FINAL_END_PAGE  = "../../pages/rapport_affaire01/fin_definitive.html";
 
